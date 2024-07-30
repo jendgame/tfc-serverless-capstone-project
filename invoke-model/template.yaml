@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Lambda function to invoke model
+
+Resources:
+  MyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./invoke-model/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /invoke-model
+            Method: POST
+            
+  RegisterUser:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./register-user/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+
+  ValidateRegister:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./validate-register/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      
+  ScheduleEvent:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./schedule-event/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      
+  CalculateDate:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./calculate-date/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      
+        
